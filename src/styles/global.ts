@@ -1,40 +1,41 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
-  :root{
-    --background: #0067a3;
-    --blue: #004269;
+    :root {
+        --background: #0067a3;
+        --blue: #004269;
+        --text-body: #363f5f;
+        --background-modal: #f0f2f5;
 
-    --background-modal: #f0f2f5;
-    --text-body: #363f5f;
+        --blue-light: #6933ff;
+    }
 
-    --blue-light: #6933ff
-  }
-  *{
-    margin: 0;
-    padding: 0;
-  }
+    * {
+        margin: 0;
+        padding: 0;
+    }
 
-  body {
-    background-color: var(--background);
-  }
+    body {
+        background-color: var(--background);
+    }
 
-  border-style, input-security, textarea, button{
-    font-family: Arial, Helvetica, sans-serif;
-  };
+    body, input-security, textarea, button {
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-  button{
-    cursor: pointer;
-  }
-  [disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
+    button {
+        cursor: pointer;
+    }
 
-  .react-modal-overlay{
+    [disabled] {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .react-modal-overlay{
         background: rgba(0,0,0,0.5);
-        
+
         position: fixed;
         top: 0;
         left: 0;
@@ -66,5 +67,4 @@ export const GlobalStyle = createGlobalStyle`
     }
 
 
-
-`;
+`

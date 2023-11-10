@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Modal from "react-modal";
-
+import { Header } from "./components/Header";
+import { ListTarefas } from "./components/ListTarefas";
 import { GlobalStyle } from "./styles/global";
-import { Header } from "./componentes/Header";
-import { LisTarefas } from "./componentes/ListTarefas";
-import { CustomModal } from "./componentes/CustomModal";
-import { TaskProvider } from "./context/taskContext";
+import { CustomModal } from "./components/CustomModal";
+import { TarefasProvider } from "./contexts/tarefaContext";
 
 Modal.setAppElement("#root");
 
+// dontpad.com/profchines
 function App() {
     const [isVisibleModal, setIsVisibleModal] = useState(false);
 
@@ -22,18 +22,17 @@ function App() {
 
     return (
         <>
-        <TaskProvider>
-            <GlobalStyle />
-            <Header 
-            abrirModal={abrirModal} 
-            />
-            <LisTarefas />
+            <TarefasProvider>
+                <GlobalStyle />
+                <Header abrirModal={abrirModal} />
 
-            <CustomModal
-                modalVisible={isVisibleModal}
-                fecharModal={fecharModal}
-            />
-            </TaskProvider>
+                <ListTarefas abrirModal={abrirModal} />
+
+                <CustomModal
+                    modalVisible={isVisibleModal}
+                    fecharModal={fecharModal}
+                />
+            </TarefasProvider>
         </>
     );
 }

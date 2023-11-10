@@ -1,6 +1,7 @@
-import {FormEvent, useState} from 'react'
+import {FormEvent, useContext, useState} from 'react'
 import Modal from "react-modal";
 import { FormContainer } from "./styles";
+import { TaskContext } from '../../context/taskContext';
 
 interface PropsModal{
     modalVisible: boolean;
@@ -9,6 +10,7 @@ interface PropsModal{
 }
 
 export function CustomModal(props: PropsModal) {
+    const{createTask} = useContext(TaskContext)
 
     const[titulo, setTitulo] = useState('')
     const[descricao, setDescricao] = useState('')
@@ -17,7 +19,15 @@ export function CustomModal(props: PropsModal) {
     
     function criarTarefa(event: FormEvent){
         event.preventDefault()
-        console.log(titulo, descricao)
+     
+        createTask({
+            titulo: titulo,
+            descricao
+        })
+
+        setTitulo('')
+        setDescricao('')
+        props.fecharModal()
 
     }
 
@@ -41,11 +51,13 @@ export function CustomModal(props: PropsModal) {
                 <h2>Cadastrar Tarefa</h2>
                 <input type="text" placeholder="Titulo" 
                 value={titulo}
+                required
                 onChange={(event)=> setTitulo(event.target.value)}
                 />
 
                 <textarea placeholder="Descrição"
                 value={descricao}
+                required
                 onChange={(event)=> setDescricao(event.target.value)}
                 />
 
