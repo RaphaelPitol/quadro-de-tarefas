@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2'
 import { ReactNode, createContext, useState, useEffect } from "react";
 
 
@@ -49,7 +50,7 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
     }, []);
 
     async function createTarefa(data: Tarefas) {
-        const resposta = await axios.post("/api/tarefas", data);
+       await axios.post("/api/tarefas", data);
 
         axios
             .get("/api/tarefas") //5min
@@ -58,7 +59,7 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
             });
     }
     async function updateTarefa(data: Tarefas) {
-        const resposta = await axios.put("/api/tarefas", data);
+       await axios.put("/api/tarefas", data);
 
         axios
             .get("/api/tarefas") //5min
@@ -67,12 +68,31 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
             });
     }
     async function deleteTarefa(id: string) {
-        await axios.delete(`/api/tarefas/${id}`);
+        // await axios.delete(`/api/tarefas/${id}`);
 
-        axios.get('/api/tarefas')
-            .then((res) => {
-                setTarefas(res.data.tarefas);
-            });
+        // axios.get('/api/tarefas')
+        //     .then((res) => {
+        //         setTarefas(res.data.tarefas);
+        //     });
+        Swal.fire({
+            text: "Você realmente deseja Excluir?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim!',
+            cancelButtonText: 'Não'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                await axios.delete(`/api/tarefas/${id}`);
+
+                axios.get('/api/tarefas')
+                    .then((res) => {
+                        setTarefas(res.data.tarefas);
+                    });
+            }
+        });
     }
 
     function funSetTarefaDefaut() {
