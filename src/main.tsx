@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
+import Swal from 'sweetalert2'
 import { Model, createServer } from 'miragejs'
 
 createServer({
@@ -23,6 +24,9 @@ createServer({
         this.delete('/api/tarefas/:id', (schema, request) => {
             const id = request.params.id;
             schema.db.tarefas.remove(id);
+            Swal.fire({
+                text:"Deletado com sucesso!"
+            })
             return schema
         });
 
