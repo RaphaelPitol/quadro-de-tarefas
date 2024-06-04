@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+// import App from './App.tsx'
 import Swal from 'sweetalert2'
 import { Model, createServer } from 'miragejs'
+import { Rotas } from './routes.tsx'
 
 createServer({
     models: {
@@ -37,6 +38,6 @@ createServer({
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <Rotas />
   </React.StrictMode>,
 )

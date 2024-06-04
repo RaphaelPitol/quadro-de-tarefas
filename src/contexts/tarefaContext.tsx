@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { ReactNode, createContext, useState, useEffect } from "react";
+import { Loading } from "../components/Loading";
 
 
 interface Tarefas {
@@ -41,6 +42,7 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
         editar: false,
         tarefa: null,
     });
+    const[loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
         axios.get("/api/tarefas").then((res) => {
@@ -50,24 +52,29 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
     }, []);
 
     async function createTarefa(data: Tarefas) {
+        setLoading(true)
        await axios.post("/api/tarefas", data);
 
         axios
             .get("/api/tarefas") //5min
             .then((res) => {
                 setTarefas(res.data.tarefas);
+                setLoading(false)
             });
     }
     async function updateTarefa(data: Tarefas) {
+        setLoading(true)
        await axios.put("/api/tarefas", data);
 
         axios
             .get("/api/tarefas") //5min
             .then((res) => {
                 setTarefas(res.data.tarefas);
+                setLoading(false)
             });
     }
     async function deleteTarefa(id: string) {
+        // setLoading(true)
         // await axios.delete(`/api/tarefas/${id}`);
 
         // axios.get('/api/tarefas')
@@ -90,6 +97,7 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
                 axios.get('/api/tarefas')
                     .then((res) => {
                         setTarefas(res.data.tarefas);
+                        // setLoading(false)
                     });
             }
         });
@@ -114,6 +122,7 @@ export function TarefasProvider({ children }: PropsTarefaProvider) {
                 deleteTarefa
             }}
         >
+            <Loading visible={loading}/>
             {children}
         </TarefaContext.Provider>
     );

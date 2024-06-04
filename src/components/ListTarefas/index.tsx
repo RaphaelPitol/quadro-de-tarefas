@@ -12,6 +12,7 @@ export function ListTarefas(props: PropsListTarefas) {
     const { tarefas, funEditarTarefa, deleteTarefa } =
         useContext(TarefaContext);
 
+        console.log(tarefas)
     const tarefasQuadro1 = tarefas.filter((tarefa) => tarefa.quadro === "1");
     const tarefasQuadro2 = tarefas.filter((tarefa) => tarefa.quadro === "2");
     const tarefasQuadro3 = tarefas.filter((tarefa) => tarefa.quadro === "3");

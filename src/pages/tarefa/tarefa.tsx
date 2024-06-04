@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import { Header } from "./components/Header";
-import { ListTarefas } from "./components/ListTarefas";
-import { GlobalStyle } from "./styles/global";
-import { CustomModal } from "./components/CustomModal";
-import { TarefasProvider } from "./contexts/tarefaContext";
+import { Header } from "../../components/Header";
+
+import { ListTarefas } from "../../components/ListTarefas";
+import { GlobalStyle } from "../../styles/global";
+import { CustomModal } from "../../components/CustomModal";
+import { TarefasProvider } from "../../contexts/tarefaContext";
 
 Modal.setAppElement("#root");
 
 // dontpad.com/profchines
-function App() {
+function Tarefa() {
     const [isVisibleModal, setIsVisibleModal] = useState(false);
 
     function abrirModal() {
@@ -37,4 +38,4 @@ function App() {
     );
 }
 
-export default App;
+export default Tarefa;
