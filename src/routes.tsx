@@ -7,7 +7,7 @@ export function Rotas(){
         <BrowserRouter>
             <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="/tarefa" element={<Tarefa />} />
+            <Route path="/tarefa/:admin" element={<Tarefa />} />
             </Routes>
         </BrowserRouter>
     )

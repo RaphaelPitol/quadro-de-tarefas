@@ -29,4 +29,12 @@ export const Container = styled.header`
         }
 
     }
+    .btn {
+        background: #f00;
+        transition: 0ms.5;
+        &:hover {
+            background: #f100f0;
+            color: black;
+        }
+    }
 `
