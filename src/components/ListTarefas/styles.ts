@@ -33,5 +33,10 @@ export const Container = styled.div`
             justify-content: space-between;
 
         }
+        button {
+            background: white;
+            width: 50px;
+            height: 40px;
+        }
     }
 `
