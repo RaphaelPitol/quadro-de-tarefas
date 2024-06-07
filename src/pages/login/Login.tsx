@@ -13,7 +13,7 @@ export function Login(){
         e.preventDefault();
         // Validação simples para fins de exemplo
         if (username === 'admin' && password === 'admin') {
-            navigate('/app')
+            navigate('/tarefa')
             setError('');
         } else {
             setError('Nome de usuário ou senha incorretos');

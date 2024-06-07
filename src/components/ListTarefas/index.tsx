@@ -22,7 +22,7 @@ export function ListTarefas(props: PropsListTarefas) {
             <Container>
                 <div>
                     <ul>
-                        <h3>Quadro 1</h3>
+                        <h3>TODO</h3>
 
                         {tarefasQuadro1.map((tarefa, index) => {
                             return (
@@ -68,7 +68,7 @@ export function ListTarefas(props: PropsListTarefas) {
                 </div>
                 <div>
                     <ul>
-                        <h3>Quadro 2</h3>
+                        <h3>DOING</h3>
 
                         {tarefasQuadro2.map((tarefa, index) => {
                             return (
@@ -114,7 +114,7 @@ export function ListTarefas(props: PropsListTarefas) {
                 </div>
                 <div>
                     <ul>
-                        <h3>Quadro 3</h3>
+                        <h3>DONE</h3>
 
                         {tarefasQuadro3.map((tarefa, index) => {
                             return (
