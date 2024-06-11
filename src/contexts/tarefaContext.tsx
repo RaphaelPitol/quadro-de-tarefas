@@ -21,6 +21,7 @@ interface DataEditarTarefa {
     tarefa: TarefasWithId | null;
 }
 
+
 interface PropsTarefaContext {
     tarefas: Array<TarefasWithId>;
     createTarefa: (tarefas: Tarefas) => Promise<void>;
